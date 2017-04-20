@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, TextInput, Button, View, ScrollView} from 'react-native';
+import { AppRegistry, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView} from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Styles from './styles';
 
@@ -23,6 +23,8 @@ export default class Main extends Component {
     //retrieve data here
     //here
     //end of retrieving data
+    //show loading here
+    //after retrieving data [move this as callback]
     this.setState({
       isShow: true
     });
@@ -31,31 +33,37 @@ export default class Main extends Component {
   render() {
     return (
       <View style={Styles.container}>
-        <View style={Styles.MDcontainer}>
-          <ScrollView style={Styles.MDList}>
-        {
-          this.state.isShow ?
-          <Text>Showing github md file list</Text>
-          :
-          <Text>Insert the git repo link in the input box</Text>
-        }
-          </ScrollView>
+        <View style={Styles.header}>
+          <Text style={Styles.headerText}>Parse Your MD File</Text>
         </View>
-      <View style={Styles.inputController}>
+      <ScrollView style={Styles.MDList}>
+      {
+        this.state.isShow ?
+        <Text style={{alignSelf: 'center'}}>Showing github md file list</Text>
+        :
+        <Text style={{alignSelf: 'center'}}>Insert the git repo link in the input box</Text>
+      }
+      </ScrollView>
+      <View style={Styles.footer}>
+          <TouchableOpacity
+            style={Styles.addButton}
+            title= "Send"
+            onPress={this.sendLink.bind(this)}
+          >
+            <Text style={Styles.addButtonText}>Search</Text>
+          </TouchableOpacity>
           <TextInput
-            style={Styles.linkInput}
-            placeholder="your message here"
+            style={Styles.textInput}
+            placeholder="Input format is user-name/repo-name"
+            placeholderTextColor="white"
+            underlineColorAndroid="transparent"
             onChangeText={(text) => this.setLink(text)}
             onSubmitEditing={this.sendLink.bind(this)}
             blurOnSubmit={true}
             multiline={false}
             >
           </TextInput>
-          <Button
-            style={Styles.buttonSend}
-            title= "Send"
-            onPress={this.sendLink.bind(this)}
-          />
+
         </View>
       </View>
     );
