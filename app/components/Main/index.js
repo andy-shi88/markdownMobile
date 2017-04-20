@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView} from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Styles from './styles';
-
+let RC =  require('./getRawFile');
 
 export default class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
       link: '',
+      md_link: '',
       isShow: false
     };
   }
@@ -32,13 +33,22 @@ export default class Main extends Component {
     //check if input is empty
     if(this.checkInput()) {
       //retrieve data here
+      //retrieve MD link
+      let md_link = '';
+      RC.getFile(this.state.link).then((responseJson) => {
+        md_link = responseJson;
+        this.setState({
+          md_link: md_link,
+          isShow: true
+        });
+      }).catch((error) => {
+        console.log(error);
+      });
+      //end of retrieving link
       //here
       //end of retrieving data
       //show loading here
       //after retrieving data [move this as callback]
-      this.setState({
-        isShow: true
-      });
     }
   }
 
@@ -51,7 +61,7 @@ export default class Main extends Component {
       <ScrollView style={Styles.MDList}>
       {
         this.state.isShow ?
-        <Text style={{alignSelf: 'center'}}>Showing github md file list</Text>
+        <Text style={{alignSelf: 'center'}}>Your Readme location: {this.state.md_link}</Text>
         :
         <Text style={{alignSelf: 'center'}}>Insert the git repo link in the input box</Text>
       }
