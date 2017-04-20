@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, TextInput, TouchableOpacity, View, ScrollView} from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
 import Styles from './styles';
+import Markdown from 'react-native-simple-markdown';
 let RC =  require('./getRawFile');
+import Content from './Content';
 
 export default class Main extends Component {
   constructor(props) {
@@ -30,6 +32,7 @@ export default class Main extends Component {
 
 //sendlink is activated after clicking send button or pressing enter after input text
   sendLink() {
+    
     //check if input is empty
     if(this.checkInput()) {
       //retrieve data here
@@ -41,11 +44,25 @@ export default class Main extends Component {
           md_link: md_link,
           isShow: true
         });
+        //get data
+        fetch(this.state.md_link)
+        .then((res) => {
+          let data = res._bodyInit;
+          this.setState({
+            data: data
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+
+
       }).catch((error) => {
         console.log(error);
       });
       //end of retrieving link
-      //here
+      //retrieve data
+
       //end of retrieving data
       //show loading here
       //after retrieving data [move this as callback]
@@ -61,7 +78,7 @@ export default class Main extends Component {
       <ScrollView style={Styles.MDList}>
       {
         this.state.isShow ?
-        <Text style={{alignSelf: 'center'}}>Your Readme location: {this.state.md_link}</Text>
+        <Markdown>{this.state.data}</Markdown>
         :
         <Text style={{alignSelf: 'center'}}>Insert the git repo link in the input box</Text>
       }
