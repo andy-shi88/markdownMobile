@@ -18,16 +18,28 @@ export default class Main extends Component {
       link: text
     });
   }
+//check input
+  checkInput() {
+    if(this.state.link === '') {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 //sendlink is activated after clicking send button or pressing enter after input text
   sendLink() {
-    //retrieve data here
-    //here
-    //end of retrieving data
-    //show loading here
-    //after retrieving data [move this as callback]
-    this.setState({
-      isShow: true
-    });
+    //check if input is empty
+    if(this.checkInput()) {
+      //retrieve data here
+      //here
+      //end of retrieving data
+      //show loading here
+      //after retrieving data [move this as callback]
+      this.setState({
+        isShow: true
+      });
+    }
   }
 
   render() {
