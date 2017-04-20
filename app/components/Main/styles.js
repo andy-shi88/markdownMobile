@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    backgroundColor:'#E91E63',
+    backgroundColor:'#1abc9c',
     alignItems:'center',
     justifyContent:'center',
     borderBottomWidth:10,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     bottom:0
   },
   addButton:{
-    backgroundColor:"#E91E63",
+    backgroundColor:"#1abc9c",
     height:70,
     width:70,
     borderRadius:50,
