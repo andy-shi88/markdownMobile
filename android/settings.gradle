@@ -1,0 +1,3 @@
+rootProject.name = 'markdownMobile'
+
+include ':app'
