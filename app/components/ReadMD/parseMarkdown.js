@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
+import Markdown from 'react-native-markdown';
 
 export default class parseMarkdown extends Component {
   constructor(props) {
@@ -7,11 +9,22 @@ export default class parseMarkdown extends Component {
       link: 'props.link';
     };
   }
-  componentWillMount()
+
   render() {
     return (
       <View>
-        <Text>Readme here</Text>
+        <Markdown>
+          {
+            fetch('https://raw.githubusercontent.com/lwansbrough/react-native-markdown/master/README.md')
+            .then((res) => {return res.json()})
+            .then((resData) => {
+              return resData;
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+          }
+        </Markdown>
       </View>
     );
   }
