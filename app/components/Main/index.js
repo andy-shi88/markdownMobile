@@ -32,7 +32,7 @@ export default class Main extends Component {
 
 //sendlink is activated after clicking send button or pressing enter after input text
   sendLink() {
-    
+
     //check if input is empty
     if(this.checkInput()) {
       //retrieve data here
@@ -78,7 +78,7 @@ export default class Main extends Component {
       <ScrollView style={Styles.MDList}>
       {
         this.state.isShow ?
-        <Markdown>{this.state.data}</Markdown>
+        <Text> {this.state.data}</Text>
         :
         <Text style={{alignSelf: 'center'}}>Insert the git repo link in the input box</Text>
       }

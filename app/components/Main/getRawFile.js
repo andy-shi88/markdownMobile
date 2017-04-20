@@ -3,7 +3,7 @@ let getRawFile = {
       return fetch('https://api.github.com/repos/'+repo+'/contents/')
       .then((response) => response.json())
       .then((responseJson) => {
-      var tes=/.md/;
+      var tes=/README.md/;
       for(var i= 0; i < responseJson.length; i++){
         if(tes.test(responseJson[i].download_url) == true){
           return responseJson[i].download_url
