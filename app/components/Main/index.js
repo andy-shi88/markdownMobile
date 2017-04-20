@@ -19,14 +19,14 @@ export default class Main extends Component {
   render() {
     return (
       <View style={Styles.container}>
-        <View style={Styles.conversation}>
-          <ScrollView style={Styles.messageList}>
+        <View style={Styles.MDcontainer}>
+          <ScrollView style={Styles.MDList}>
 
           </ScrollView>
         </View>
       <View style={Styles.inputController}>
           <TextInput
-            style={Styles.messageInput}
+            style={Styles.linkInput}
             placeholder="your message here"
             onChangeText={(text) => this.setLink(text)}
             blurOnSubmit={true}

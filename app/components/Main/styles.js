@@ -5,45 +5,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1
   },
-  conversation: {
+  MDcontainer: {
     flex: 5,
   },
-  messageList: {
+  MDList: {
 
-  },
-  messageBoxContainer: {
-    flex: 3,
-    flexDirection: 'row',
-    alignItems: 'flex-start'
-  },
-  messageBoxUser: {
-    flex: 1,
-    backgroundColor: '#29c43d',
-    padding: 20,
-    marginLeft: 10,
-    marginRight: 40,
-    marginTop: 20,
-    borderRadius: 8,
-    width: 50,
-  },
-  messageBoxRespond: {
-    flex: 1,
-    backgroundColor: '#1e9ea0',
-    padding: 20,
-    marginRight: 10,
-    marginLeft: 40,
-    marginTop: 20,
-    borderRadius: 8,
-    width: 300,
-  },
-  messageText: {
-    color: "#ffffff",
-    flex: 1
   },
   inputController: {
     flex: 1,
   },
-  messageInput: {
+  linkInput: {
     borderRadius: 5,
   },
   buttonSend: {
